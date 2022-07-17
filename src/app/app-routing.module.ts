@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './cards/cards.component';
 import { ChartsComponent } from './charts/charts.component';
@@ -27,7 +28,12 @@ const routes: Routes = [
       { path: 'buttons', component: ButtonsComponent },
       { path: 'charts', component: ChartsComponent },
       { path: 'page1', component: Page1Component, title: 'SB Admin 2 - Page1' },
-      { path: 'page2', component: Page2Component, title: 'SB Admin 2 - Page2' },
+      {
+        path: 'page2',
+        component: Page2Component,
+        title: 'SB Admin 2 - Page2',
+        canActivate: [AuthGuard],
+      },
       {
         path: 'utilities',
         loadChildren: () =>
