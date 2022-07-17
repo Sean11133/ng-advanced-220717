@@ -4,6 +4,7 @@ import { CardsComponent } from './cards/cards.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlotComponent } from './flot/flot.component';
 import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './login/login.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { AnimationComponent } from './utilities/animation/animation.component';
@@ -12,6 +13,7 @@ import { ColorComponent } from './utilities/color/color.component';
 import { OtherComponent } from './utilities/other/other.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   {
     path: '',
     component: LayoutComponent,
