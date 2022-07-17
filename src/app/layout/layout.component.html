@@ -66,8 +66,15 @@
       >
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" routerLink="/buttons">Buttons</a>
-          <a class="collapse-item" routerLink="/cards">Cards</a>
+          <a
+            class="collapse-item"
+            routerLinkActive="active"
+            routerLink="/buttons"
+            >Buttons</a
+          >
+          <a class="collapse-item" routerLinkActive="active" routerLink="/cards"
+            >Cards</a
+          >
         </div>
       </div>
     </li>
@@ -93,12 +100,30 @@
       >
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" routerLink="/utilities/colors">Colors</a>
-          <a class="collapse-item" routerLink="/utilities/border">Borders</a>
-          <a class="collapse-item" routerLink="/utilities/animation"
+          <a
+            class="collapse-item"
+            routerLinkActive="active"
+            routerLink="/utilities/colors"
+            >Colors</a
+          >
+          <a
+            class="collapse-item"
+            routerLinkActive="active"
+            routerLink="/utilities/border"
+            >Borders</a
+          >
+          <a
+            class="collapse-item"
+            routerLinkActive="active"
+            routerLink="/utilities/animation"
             >Animations</a
           >
-          <a class="collapse-item" routerLink="/utilities/other">Other</a>
+          <a
+            class="collapse-item"
+            routerLinkActive="active"
+            routerLink="/utilities/other"
+            >Other</a
+          >
         </div>
       </div>
     </li>
@@ -130,7 +155,7 @@
       >
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Login Screens:</h6>
-          <a class="collapse-item" href="login.html">Login</a>
+          <a class="collapse-item" routerLink="/login">Login</a>
           <a class="collapse-item" href="register.html">Register</a>
           <a class="collapse-item" href="forgot-password.html"
             >Forgot Password</a
