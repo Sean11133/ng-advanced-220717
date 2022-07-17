@@ -9,11 +9,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CardsComponent } from './cards/cards.component';
 import { FlotComponent } from './flot/flot.component';
-import { ColorComponent } from './utilities/color/color.component';
-import { AnimationComponent } from './utilities/animation/animation.component';
-import { BorderComponent } from './utilities/border/border.component';
-import { OtherComponent } from './utilities/other/other.component';
 import { LoginComponent } from './login/login.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TablesComponent } from './tables/tables.component';
+import { ButtonsComponent } from './buttons/buttons.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +23,13 @@ import { LoginComponent } from './login/login.component';
     LayoutComponent,
     CardsComponent,
     FlotComponent,
-    ColorComponent,
-    AnimationComponent,
-    BorderComponent,
-    OtherComponent,
-    LoginComponent
+    LoginComponent,
+    ChartsComponent,
+    TablesComponent,
+    ButtonsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

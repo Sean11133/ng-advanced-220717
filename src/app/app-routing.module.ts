@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './cards/cards.component';
+import { ChartsComponent } from './charts/charts.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlotComponent } from './flot/flot.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
-import { AnimationComponent } from './utilities/animation/animation.component';
-import { BorderComponent } from './utilities/border/border.component';
-import { ColorComponent } from './utilities/color/color.component';
-import { OtherComponent } from './utilities/other/other.component';
+import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,17 +23,17 @@ const routes: Routes = [
         component: DashboardComponent,
         title: 'SB Admin 2 - Dashboard',
       },
+      { path: 'tables', component: TablesComponent },
+      { path: 'buttons', component: ButtonsComponent },
+      { path: 'charts', component: ChartsComponent },
       { path: 'page1', component: Page1Component, title: 'SB Admin 2 - Page1' },
       { path: 'page2', component: Page2Component, title: 'SB Admin 2 - Page2' },
       {
         path: 'utilities',
-        children: [
-          { path: 'animation', component: AnimationComponent },
-          { path: 'border', component: BorderComponent },
-          { path: 'color', component: ColorComponent },
-          { path: 'other', component: OtherComponent },
-        ],
+        loadChildren: () =>
+          import('./utilities/utilities.module').then((m) => m.UtilitiesModule),
       },
+      { path: 'cards', component: CardsComponent },
       { path: 'cards/:type', component: CardsComponent },
       {
         path: 'charts',
