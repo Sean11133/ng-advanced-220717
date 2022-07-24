@@ -18,6 +18,12 @@ export class Login2Component implements OnInit {
     password: '1qaz@WSX',
     tel: '0987',
     isRememberMe: true,
+    profiles: [
+      {
+        city: 'Taipei',
+        tel: '0988-888888',
+      },
+    ],
   };
 
   orig_body_className = document.body.className;
@@ -61,7 +67,12 @@ export class Login2Component implements OnInit {
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
     setTimeout(() => {
-      // this.form.setValue(this.data);
+      this.form.controls.profiles.clear();
+      this.data.profiles.forEach((item) => {
+        this.form.controls.profiles.push(
+          this.makeProfiles(item.city, item.tel)
+        );
+      });
       this.form.patchValue(this.data);
     }, 2000);
   }
@@ -82,13 +93,13 @@ export class Login2Component implements OnInit {
     this.form.controls.profiles.push(this.makeProfiles('', ''));
   }
 
-  // doLogin(form: NgForm) {
-  //   if (form.valid) {
-  //     localStorage.setItem('apikey', 'TEST');
-  //     let url = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-  //     this.router.navigateByUrl(url);
-  //   }
-  // }
+  doLogin() {
+    if (this.form.valid) {
+      localStorage.setItem('apikey', 'TEST');
+      let url = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+      this.router.navigateByUrl(url);
+    }
+  }
 
   // isInValid(control: NgModel, form: NgForm) {
   //   return control.invalid && (control.touched || form.submitted);
