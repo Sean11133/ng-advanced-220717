@@ -8,12 +8,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlotComponent } from './flot/flot.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { Login2Component } from './login2/login2.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'login2', component: Login2Component },
   {
     path: '',
     component: LayoutComponent,

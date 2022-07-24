@@ -14,6 +14,7 @@ import { TablesComponent } from './tables/tables.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Login2Component } from './login2/login2.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChartsComponent,
     TablesComponent,
     ButtonsComponent,
+    Login2Component,
   ],
   imports: [
     BrowserModule,
