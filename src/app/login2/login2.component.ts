@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, UntypedFormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,14 +14,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Login2Component implements OnInit {
   data = {
-    email: 'aa',
-    password: 'vv',
-    isRemember: true,
+    email: 'sean47715@gmail.com',
+    password: '1qaz@WSX',
+    isRememberMe: true,
   };
 
   orig_body_className = document.body.className;
 
-  form = this.fb.group(this.data);
+  form = this.fb.group({
+    email: this.fb.control('', {
+      validators: [Validators.required, Validators.email],
+      updateOn: 'blur',
+    }),
+    password: this.fb.control('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(32),
+      ],
+    }),
+    isRememberMe: this.fb.control(true, {}),
+  });
 
   constructor(
     private router: Router,
@@ -25,10 +44,17 @@ export class Login2Component implements OnInit {
 
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
+    setTimeout(() => {
+      this.form.setValue(this.data);
+    }, 2000);
   }
 
   ngOnDestroy(): void {
     document.body.className = this.orig_body_className;
+  }
+
+  fc(name: string) {
+    return this.form.get(name) as FormControl;
   }
 
   // doLogin(form: NgForm) {
