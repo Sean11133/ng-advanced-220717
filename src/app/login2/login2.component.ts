@@ -16,6 +16,7 @@ export class Login2Component implements OnInit {
   data = {
     email: 'sean47715@gmail.com',
     password: '1qaz@WSX',
+    tel: '0987',
     isRememberMe: true,
   };
 
@@ -45,7 +46,8 @@ export class Login2Component implements OnInit {
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
     setTimeout(() => {
-      this.form.setValue(this.data);
+      // this.form.setValue(this.data);
+      this.form.patchValue(this.data);
     }, 2000);
   }
 
@@ -55,6 +57,10 @@ export class Login2Component implements OnInit {
 
   fc(name: string) {
     return this.form.get(name) as FormControl;
+  }
+
+  resetForm() {
+    this.form.reset(this.data);
   }
 
   // doLogin(form: NgForm) {
