@@ -11,6 +11,10 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
     isRememberMe: true,
+    tab1: {
+      addr: '',
+      tel: '',
+    },
   };
 
   orig_body_className = document.body.className;

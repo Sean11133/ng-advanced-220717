@@ -69,6 +69,32 @@
                       請輸入密碼長度需大於 5
                     </p>
                   </div>
+
+                  <div ngModelGroup #mtab1="ngModelGroup">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Address..."
+                        name="addr"
+                        [(ngModel)]="data.addr"
+                        #mAddr="ngModel"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user"
+                        placeholder="Tel"
+                        name="tel"
+                        [(ngModel)]="data.tel"
+                        #mTel="ngModel"
+                        required
+                      />
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
                       <input
@@ -86,6 +112,7 @@
                   </div>
                   <button
                     type="submit"
+                    [disabled]="form.invalid"
                     class="btn btn-primary btn-user btn-block"
                   >
                     Login
