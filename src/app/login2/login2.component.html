@@ -91,12 +91,22 @@
                     </ng-container>
                   </ng-container>
 
-                  <a
-                    href="index.html"
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    type="button"
+                    (click)="addProfiles()"
+                  >
+                    <i class="fa fa-plus"></i>
+                    addProfiles
+                  </button>
+
+                  <button
+                    type="submit"
+                    [disabled]="form.invalid"
                     class="btn btn-primary btn-user btn-block"
                   >
                     Login
-                  </a>
+                  </button>
                   <hr />
                   <button
                     type="button"

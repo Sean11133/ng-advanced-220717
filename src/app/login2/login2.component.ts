@@ -36,22 +36,21 @@ export class Login2Component implements OnInit {
     }),
     isRememberMe: this.fb.control(true, {}),
     profiles: this.fb.array([
-      this.fb.group({
-        city: this.fb.control('Taipei', { validators: [Validators.required] }),
-        tel: this.fb.control('0988-888888', {
-          validators: [Validators.required],
-        }),
-      }),
-      this.fb.group({
-        city: this.fb.control('Taichung', {
-          validators: [Validators.required],
-        }),
-        tel: this.fb.control('0944-444444', {
-          validators: [Validators.required],
-        }),
-      }),
+      this.makeProfiles('Taipei', '0988-888888'),
+      this.makeProfiles('Taichung', '0944-444444'),
     ]),
   });
+
+  makeProfiles(city: string, tel: string) {
+    return this.fb.group({
+      city: this.fb.control(city, {
+        validators: [Validators.required],
+      }),
+      tel: this.fb.control(tel, {
+        validators: [Validators.required],
+      }),
+    });
+  }
 
   constructor(
     private router: Router,
@@ -77,6 +76,10 @@ export class Login2Component implements OnInit {
 
   resetForm() {
     this.form.reset(this.data);
+  }
+
+  addProfiles() {
+    this.form.controls.profiles.push(this.makeProfiles('', ''));
   }
 
   // doLogin(form: NgForm) {
