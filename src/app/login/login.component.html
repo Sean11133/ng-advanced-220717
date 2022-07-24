@@ -12,13 +12,13 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user">
+                <form class="user" #form="ngForm" (ngSubmit)="doLogin(form)">
                   <div class="form-group">
                     <input
                       type="email"
                       class="form-control form-control-user is-invalid"
-                      [class.is-invalid]="mEmail.invalid"
-                      [class.is-valid]="mEmail.valid"
+                      [class.is-invalid]="isInValid(mEmail, form)"
+                      [class.is-valid]="isValid(mEmail)"
                       id="exampleInputEmail"
                       aria-describedby="emailHelp"
                       placeholder="Enter Email Address..."
@@ -30,13 +30,13 @@
                     />
                     <p
                       class="invalid-feedback"
-                      *ngIf="mEmail.invalid && mEmail.errors?.['required']"
+                      *ngIf="isInValid(mEmail, form) && mEmail.errors?.['required']"
                     >
                       請輸入 Email 地址 (帳號)
                     </p>
                     <p
                       class="invalid-feedback"
-                      *ngIf="mEmail.invalid  && mEmail.errors?.['email']"
+                      *ngIf="isInValid(mEmail, form)  && mEmail.errors?.['email']"
                     >
                       請輸入 Email 地址
                     </p>
@@ -45,7 +45,7 @@
                     <input
                       type="password"
                       class="form-control form-control-user"
-                      [class.is-invalid]="mPassword.invalid"
+                      [class.is-invalid]="isInValid(mPassword, form)"
                       [class.is-valid]="mPassword.valid"
                       id="exampleInputPassword"
                       placeholder="Password"
@@ -53,12 +53,20 @@
                       [(ngModel)]="data.password"
                       #mPassword="ngModel"
                       required
+                      minlength="5"
+                      maxlength="32"
                     />
                     <p
                       class="invalid-feedback"
-                      *ngIf="mPassword.invalid && mPassword.errors?.['required']"
+                      *ngIf="isInValid(mPassword, form) && mPassword.errors?.['required']"
                     >
                       請輸入密碼
+                    </p>
+                    <p
+                      class="invalid-feedback"
+                      *ngIf="isInValid(mPassword, form) && mPassword.errors?.['minlength']"
+                    >
+                      請輸入密碼長度需大於 5
                     </p>
                   </div>
                   <div class="form-group">
@@ -76,12 +84,12 @@
                       >
                     </div>
                   </div>
-                  <a
-                    (click)="doLogin()"
+                  <button
+                    type="submit"
                     class="btn btn-primary btn-user btn-block"
                   >
                     Login
-                  </a>
+                  </button>
                   <hr />
                   <a
                     href="index.html"

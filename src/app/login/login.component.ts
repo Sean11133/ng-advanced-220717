@@ -1,5 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, NgModule } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
@@ -23,9 +24,19 @@ export class LoginComponent implements OnInit {
     document.body.className = this.orig_body_className;
   }
 
-  doLogin() {
-    localStorage.setItem('apikey', 'TEST');
-    let url = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    this.router.navigateByUrl(url);
+  doLogin(form: NgForm) {
+    if (form.valid) {
+      localStorage.setItem('apikey', 'TEST');
+      let url = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+      this.router.navigateByUrl(url);
+    }
+  }
+
+  isInValid(control: NgModel, form: NgForm) {
+    return control.invalid && (control.touched || form.submitted);
+  }
+
+  isValid(control: NgModel) {
+    return control.valid;
   }
 }
