@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forbiddenPasswordValidator } from './forbiddenNameValidator';
 
 @Component({
   templateUrl: './login2.component.html',
@@ -38,6 +39,7 @@ export class Login2Component implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(32),
+        forbiddenPasswordValidator,
       ],
     }),
     isRememberMe: this.fb.control(true, {}),
