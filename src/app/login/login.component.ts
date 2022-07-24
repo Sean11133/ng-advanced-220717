@@ -1,11 +1,17 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  data: any = {
+    email: '',
+    password: '',
+    isRememberMe: true,
+  };
+
   orig_body_className = document.body.className;
   constructor(private router: Router, private route: ActivatedRoute) {}
 

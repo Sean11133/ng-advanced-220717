@@ -16,19 +16,50 @@
                   <div class="form-group">
                     <input
                       type="email"
-                      class="form-control form-control-user"
+                      class="form-control form-control-user is-invalid"
+                      [class.is-invalid]="mEmail.invalid"
+                      [class.is-valid]="mEmail.valid"
                       id="exampleInputEmail"
                       aria-describedby="emailHelp"
                       placeholder="Enter Email Address..."
+                      name="email"
+                      [(ngModel)]="data.email"
+                      #mEmail="ngModel"
+                      required
+                      email
                     />
+                    <p
+                      class="invalid-feedback"
+                      *ngIf="mEmail.invalid && mEmail.errors?.['required']"
+                    >
+                      請輸入 Email 地址 (帳號)
+                    </p>
+                    <p
+                      class="invalid-feedback"
+                      *ngIf="mEmail.invalid  && mEmail.errors?.['email']"
+                    >
+                      請輸入 Email 地址
+                    </p>
                   </div>
                   <div class="form-group">
                     <input
                       type="password"
                       class="form-control form-control-user"
+                      [class.is-invalid]="mPassword.invalid"
+                      [class.is-valid]="mPassword.valid"
                       id="exampleInputPassword"
                       placeholder="Password"
+                      name="password"
+                      [(ngModel)]="data.password"
+                      #mPassword="ngModel"
+                      required
                     />
+                    <p
+                      class="invalid-feedback"
+                      *ngIf="mPassword.invalid && mPassword.errors?.['required']"
+                    >
+                      請輸入密碼
+                    </p>
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
@@ -36,6 +67,9 @@
                         type="checkbox"
                         class="custom-control-input"
                         id="customCheck"
+                        name="isRememberMe"
+                        [(ngModel)]="data.isRememberMe"
+                        #mIsRememberMe="ngModel"
                       />
                       <label class="custom-control-label" for="customCheck"
                         >Remember Me</label
