@@ -35,6 +35,22 @@ export class Login2Component implements OnInit {
       ],
     }),
     isRememberMe: this.fb.control(true, {}),
+    profiles: this.fb.array([
+      this.fb.group({
+        city: this.fb.control('Taipei', { validators: [Validators.required] }),
+        tel: this.fb.control('0988-888888', {
+          validators: [Validators.required],
+        }),
+      }),
+      this.fb.group({
+        city: this.fb.control('Taichung', {
+          validators: [Validators.required],
+        }),
+        tel: this.fb.control('0944-444444', {
+          validators: [Validators.required],
+        }),
+      }),
+    ]),
   });
 
   constructor(
